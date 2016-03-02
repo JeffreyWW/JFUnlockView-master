@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00F507A81C86B936004375EA /* JFUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F507A71C86B936004375EA /* JFUnlockView.m */; };
+		00F507AE1C86BAAE004375EA /* JFUnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F507AD1C86BAAE004375EA /* JFUnlockViewController.m */; };
 		871351A21C8055EC00DBAE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351A11C8055EC00DBAE4C /* main.m */; };
 		871351A51C8055EC00DBAE4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351A41C8055EC00DBAE4C /* AppDelegate.m */; };
-		871351A81C8055EC00DBAE4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351A71C8055EC00DBAE4C /* ViewController.m */; };
 		871351AB1C8055EC00DBAE4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871351A91C8055EC00DBAE4C /* Main.storyboard */; };
 		871351AD1C8055EC00DBAE4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871351AC1C8055EC00DBAE4C /* Assets.xcassets */; };
 		871351B01C8055EC00DBAE4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 871351AE1C8055EC00DBAE4C /* LaunchScreen.storyboard */; };
 		871351BB1C8055EC00DBAE4C /* JFUnlockView_masterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351BA1C8055EC00DBAE4C /* JFUnlockView_masterTests.m */; };
 		871351C61C8055EC00DBAE4C /* JFUnlockView_masterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351C51C8055EC00DBAE4C /* JFUnlockView_masterUITests.m */; };
-		871351D51C80573000DBAE4C /* JFUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 871351D41C80573000DBAE4C /* JFUnlockView.m */; };
 		87C99C2A1C82D82700E612A0 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C99C281C82D82700E612A0 /* error.png */; };
 		87C99C2B1C82D82700E612A0 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C99C291C82D82700E612A0 /* normal.png */; };
 		87C99C2D1C82D86B00E612A0 /* highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C99C2C1C82D86B00E612A0 /* highlighted.png */; };
@@ -39,12 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00F507A61C86B936004375EA /* JFUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUnlockView.h; sourceTree = "<group>"; };
+		00F507A71C86B936004375EA /* JFUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUnlockView.m; sourceTree = "<group>"; };
+		00F507AC1C86BAAE004375EA /* JFUnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUnlockViewController.h; sourceTree = "<group>"; };
+		00F507AD1C86BAAE004375EA /* JFUnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUnlockViewController.m; sourceTree = "<group>"; };
 		8713519D1C8055EC00DBAE4C /* JFUnlockView-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JFUnlockView-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		871351A11C8055EC00DBAE4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		871351A31C8055EC00DBAE4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		871351A41C8055EC00DBAE4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		871351A61C8055EC00DBAE4C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		871351A71C8055EC00DBAE4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		871351AA1C8055EC00DBAE4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		871351AC1C8055EC00DBAE4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		871351AF1C8055EC00DBAE4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,11 +57,9 @@
 		871351C11C8055EC00DBAE4C /* JFUnlockView-masterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JFUnlockView-masterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		871351C51C8055EC00DBAE4C /* JFUnlockView_masterUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFUnlockView_masterUITests.m; sourceTree = "<group>"; };
 		871351C71C8055EC00DBAE4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		871351D31C80573000DBAE4C /* JFUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFUnlockView.h; sourceTree = "<group>"; };
-		871351D41C80573000DBAE4C /* JFUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFUnlockView.m; sourceTree = "<group>"; };
-		87C99C281C82D82700E612A0 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
-		87C99C291C82D82700E612A0 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
-		87C99C2C1C82D86B00E612A0 /* highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlighted.png; sourceTree = "<group>"; };
+		87C99C281C82D82700E612A0 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = ../error.png; sourceTree = "<group>"; };
+		87C99C291C82D82700E612A0 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = normal.png; path = ../normal.png; sourceTree = "<group>"; };
+		87C99C2C1C82D86B00E612A0 /* highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highlighted.png; path = ../highlighted.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00F507A51C86B936004375EA /* JFUnlockView */ = {
+			isa = PBXGroup;
+			children = (
+				00F507A61C86B936004375EA /* JFUnlockView.h */,
+				00F507A71C86B936004375EA /* JFUnlockView.m */,
+				87C99C2C1C82D86B00E612A0 /* highlighted.png */,
+				87C99C281C82D82700E612A0 /* error.png */,
+				87C99C291C82D82700E612A0 /* normal.png */,
+			);
+			path = JFUnlockView;
+			sourceTree = "<group>";
+		};
 		871351941C8055EB00DBAE4C = {
 			isa = PBXGroup;
 			children = (
@@ -110,16 +122,12 @@
 		8713519F1C8055EC00DBAE4C /* JFUnlockView-master */ = {
 			isa = PBXGroup;
 			children = (
+				00F507A51C86B936004375EA /* JFUnlockView */,
 				871351A31C8055EC00DBAE4C /* AppDelegate.h */,
 				871351A41C8055EC00DBAE4C /* AppDelegate.m */,
-				871351A61C8055EC00DBAE4C /* ViewController.h */,
-				871351A71C8055EC00DBAE4C /* ViewController.m */,
-				871351D31C80573000DBAE4C /* JFUnlockView.h */,
-				871351D41C80573000DBAE4C /* JFUnlockView.m */,
+				00F507AC1C86BAAE004375EA /* JFUnlockViewController.h */,
+				00F507AD1C86BAAE004375EA /* JFUnlockViewController.m */,
 				871351A91C8055EC00DBAE4C /* Main.storyboard */,
-				87C99C2C1C82D86B00E612A0 /* highlighted.png */,
-				87C99C281C82D82700E612A0 /* error.png */,
-				87C99C291C82D82700E612A0 /* normal.png */,
 				871351AC1C8055EC00DBAE4C /* Assets.xcassets */,
 				871351AE1C8055EC00DBAE4C /* LaunchScreen.storyboard */,
 				871351B11C8055EC00DBAE4C /* Info.plist */,
@@ -287,8 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				871351D51C80573000DBAE4C /* JFUnlockView.m in Sources */,
-				871351A81C8055EC00DBAE4C /* ViewController.m in Sources */,
+				00F507A81C86B936004375EA /* JFUnlockView.m in Sources */,
+				00F507AE1C86BAAE004375EA /* JFUnlockViewController.m in Sources */,
 				871351A51C8055EC00DBAE4C /* AppDelegate.m in Sources */,
 				871351A21C8055EC00DBAE4C /* main.m in Sources */,
 			);

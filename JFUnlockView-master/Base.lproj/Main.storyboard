@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Unlock View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="JFUnlockViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-I7-O1p" customClass="JFUnlockView">
-                                <rect key="frame" x="10" y="98" width="300" height="400"/>
+                                <rect key="frame" x="10" y="98" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="6lE-Bx-K4q"/>
+                                    <constraint firstAttribute="height" constant="300" id="6lE-Bx-K4q"/>
                                     <constraint firstAttribute="width" constant="300" id="Mkv-TQ-FMh"/>
                                 </constraints>
                             </view>
@@ -31,18 +31,36 @@
                                     <segment title="设置手势密码"/>
                                 </segments>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示文字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7G-va-nEP">
+                                <rect key="frame" x="126" y="408" width="68" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBi-KO-6mm">
+                                <rect key="frame" x="115" y="438.5" width="90" height="30"/>
+                                <state key="normal" title="重置输入密码"/>
+                                <connections>
+                                    <action selector="clickReRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zem-ND-6wf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.44228437954968941" green="0.75294117647058822" blue="0.25115717910940838" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hEd-I7-O1p" firstAttribute="top" secondItem="mYg-0g-60n" secondAttribute="bottom" constant="5" id="IgP-h6-c9k"/>
+                            <constraint firstItem="i7G-va-nEP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N0t-jB-27X"/>
+                            <constraint firstItem="HBi-KO-6mm" firstAttribute="top" secondItem="i7G-va-nEP" secondAttribute="bottom" constant="10" id="NzG-JQ-xSN"/>
                             <constraint firstItem="hEd-I7-O1p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="78" id="P97-YE-VjV"/>
+                            <constraint firstItem="i7G-va-nEP" firstAttribute="top" secondItem="hEd-I7-O1p" secondAttribute="bottom" constant="10" id="VOg-rO-2mF"/>
                             <constraint firstItem="hEd-I7-O1p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k2u-FP-VVD"/>
                             <constraint firstItem="mYg-0g-60n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mWW-lR-sqX"/>
+                            <constraint firstItem="HBi-KO-6mm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tmA-t2-Xru"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segUnloackState" destination="mYg-0g-60n" id="y3u-1i-64Z"/>
-                        <outlet property="unlockView" destination="hEd-I7-O1p" id="GLt-of-AaB"/>
+                        <outlet property="lbAlert" destination="i7G-va-nEP" id="3VY-4p-oe4"/>
+                        <outlet property="segUnlock" destination="mYg-0g-60n" id="hhH-5s-Nnp"/>
+                        <outlet property="unlockView" destination="hEd-I7-O1p" id="YAv-Ne-FCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

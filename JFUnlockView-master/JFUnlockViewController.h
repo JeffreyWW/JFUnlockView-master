@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  JFUnlockViewController.h
 //  JFUnlockView-master
 //
-//  Created by wwww on 16/2/26.
+//  Created by Jeffrey on 16/3/2.
 //  Copyright © 2016年 WeiJeffrey. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface JFUnlockViewController : UIViewController
 
 @end
-

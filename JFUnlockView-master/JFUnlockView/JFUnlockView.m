@@ -18,8 +18,7 @@
 //保存所有触摸过的按钮
 @property(nonatomic,strong)NSMutableArray * selectedButtons;
 
-//线条颜色
-@property(nonatomic,strong)UIColor *lineColor;
+
 
 //记录当前触摸过的点
 @property(nonatomic,assign)CGPoint currentPoint;
@@ -29,12 +28,32 @@
 //临时密码,用于设置密码
 @property(nonatomic,strong)NSString *tempPassword;
 
+
+
 @end
 
 
 @implementation JFUnlockView
+//懒加载三种状态按钮的图片
+-(UIImage *)imgHighlighted {
+    if (!_imgHighlighted) {
+        _imgHighlighted = [UIImage imageNamed:@"highlighted"];
+    }
+    return _imgHighlighted;
+}
+- (UIImage *)imgNormal {
+    if (!_imgNormal) {
+        _imgNormal = [UIImage imageNamed:@"normal"];
+    }
+    return _imgNormal;
+}
 
-
+-(UIImage *)imgError {
+    if (!_imgError) {
+        _imgError = [UIImage imageNamed:@"error"];
+    }
+    return _imgError;
+}
 //懒加载触摸过的按钮
 - (NSMutableArray *)selectedButtons {
     if (!_selectedButtons) {
@@ -50,7 +69,18 @@
     }
     return _lineColor;
 }
-
+- (UIColor *)lineErroeColor {
+    if (!_lineErroeColor) {
+        _lineErroeColor = [UIColor blueColor];
+    }
+    return _lineErroeColor;
+}
+- (CGFloat)buttonW {
+    if (_buttonW <= 0) {
+        _buttonW = 74.0f;
+    }
+    return _buttonW;
+}
 //懒加载按钮数组
 - (NSArray *)buttons {
     if (!_buttons) {
@@ -60,9 +90,9 @@
             button.tag  = i;
             button.userInteractionEnabled = NO;
             //设置按钮的图片
-            [button setBackgroundImage:[UIImage imageNamed:@"normal"] forState:UIControlStateNormal];
-            [button setBackgroundImage:[UIImage imageNamed:@"highlighted"] forState:UIControlStateSelected];
-            [button setBackgroundImage:[UIImage imageNamed:@"error"] forState:UIControlStateDisabled];
+            [button setBackgroundImage:self.imgNormal forState:UIControlStateNormal];
+            [button setBackgroundImage:self.imgHighlighted forState:UIControlStateSelected];
+            [button setBackgroundImage:self.imgError forState:UIControlStateDisabled];
             [self addSubview:button];
             [arrM addObject:button];
         }
@@ -76,7 +106,7 @@
     [super layoutSubviews];
     self.backgroundColor = [UIColor clearColor];
     //设置按钮的宽度和高度
-    CGFloat buttonW = 74;
+    CGFloat buttonW = self.buttonW;
     CGFloat buttonH = buttonW;
     //列数
     NSInteger col = 3;
@@ -85,7 +115,6 @@
     //设置按钮的frame
     for (int i = 0; i < self.buttons.count; i++) {
         UIButton *button = self.buttons[i];
-
         CGFloat buttonX = (buttonW + margin) * (i % col);
         CGFloat buttonY = (buttonH + margin) * (i / col);
         button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
@@ -139,8 +168,9 @@
     }
     
     //代理调用密码,以便外部可以使用
-    [self.delegate touchesDoneWithPassWord:password];
-    
+    if ([self.delegate respondsToSelector:@selector(touchesDoneWithPassWord:)]) {
+        [self.delegate touchesDoneWithPassWord:password];
+    }
     //不同状态下抬起以后界面效果不同,解锁状态下如果输入的和密码不匹配,将会显示进入对应的情形.
     
     switch (self.unlockState) {
@@ -149,10 +179,14 @@
             //判断密码是否正确,之后:
             if ([password isEqualToString:self.password]) {
                 [self clearLockView];
-                [self.delegate loginSucceedWithPwd:password];
+                if ([self.delegate respondsToSelector:@selector(loginSucceedWithPwd:)]) {
+                     [self.delegate loginSucceedWithPwd:password];
+                }
             } else {
                 [self errorState];
-                [self.delegate loginFaildWithPwd:password];
+                if ([self.delegate respondsToSelector:@selector(loginFaildWithPwd:)]) {
+                     [self.delegate loginFaildWithPwd:password];
+                }
             }
             break;
             
@@ -160,19 +194,38 @@
         case JFUnlockPwdSet:
             //如果临时密码不存在,那么设置其为刚刚滑动的密码,反之如果存在,则直接对比,正确则把密码赋值给正式密码,错误则显示对应的情形
             if (!self.tempPassword) {
+                //如果设置了最小设置数量,那么需要相符
+                if (self.minBtCount > 0) {
+                    if (self.selectedButtons.count < self.minBtCount) {
+                        [self errorState];
+                        if ([self.delegate respondsToSelector:@selector(registerFaildwithWrongCount:)]) {
+                            [self.delegate registerFaildwithWrongCount:self.selectedButtons.count];
+                        }
+                        return;
+                    }
+                }
+                //设置第一次滑动密码
                 self.tempPassword = password;
                 [self dismissState];
-                [self.delegate registerFirstTimeWithPwd:password];
+                if ([self.delegate respondsToSelector:@selector(registerFirstTimeWithPwd:)]) {
+                    [self.delegate registerFirstTimeWithPwd:password];
+                }
             } else {
                 if ([self.tempPassword isEqualToString:password]) {
                     self.password = password;
                     [self dismissState];
-                    [self.delegate registerSecondTimeWithPwd:password];
-                    [self.delegate registerSucceedWithPwd:password];
+                    if ([self.delegate respondsToSelector:@selector(registerSecondTimeWithPwd:)]) {
+                        [self.delegate registerSecondTimeWithPwd:password];
+                    }
+                    if ([self.delegate respondsToSelector:@selector(registerSucceedWithPwd:)]) {
+                         [self.delegate registerSucceedWithPwd:password];
+                    }
                 } else {
-                    self.tempPassword = nil;//临时密码清空,重新开始输入
+//                    self.tempPassword = nil;//临时密码清空,重新开始输入
                     [self errorState];
-                    [self.delegate registerFaildWithPwd:password];
+                    if ([self.delegate respondsToSelector:@selector(registerFaildWithPwd:)]) {
+                        [self.delegate registerFaildWithPwd:password];
+                    }
                 }
             }
             break;
@@ -182,11 +235,14 @@
     }
     
 }
-
+//重置临时密码,之后可以重新开始注册
+- (void)reRegister {
+    self.tempPassword = nil;
+}
 //密码输入错误,或者两次密码输入不一致的情形
 - (void)errorState {
     //颜色变成红色
-    self.lineColor = [UIColor blueColor];
+    self.lineColor = self.lineErroeColor;
     
     //禁止用户交互
     self.userInteractionEnabled = NO;
